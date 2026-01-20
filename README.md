@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # BIOS 731 Homework 1: Reproducible Computing
 
 ## Overview
