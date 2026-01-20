@@ -1,0 +1,56 @@
+---
+title: "Homework 1: Reproducible Computing"
+author: "Ruilong Chen"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+## Dataset and Research Question
+
+This report uses the CDC Social Vulnerability Index (SVI) dataset, which summarizes socioeconomic and demographic factors related to community resilience and vulnerability in public health contexts. The dataset is publicly available and stored in the `data/` directory of this project.
+
+The research question addressed in this analysis is:
+
+**How is overall social vulnerability associated with the weighted average quintile and population size?**
+
+## Data Cleaning
+
+The data cleaning process is implemented in a separate R script to promote modularity and reproducibility. This step reads the raw data using relative file paths, selects relevant variables, removes observations with missing values, and saves a tidy dataset for downstream analysis.
+
+```{r}
+source("R/01_load_clean.R")
+```
+
+## Statistical Modeling
+
+A linear regression model is fitted to assess the association between overall social vulnerability and the weighted average quintile, adjusting for total population size.
+
+```{r}
+source("R/02_model.R")
+```
+
+## Visualization
+
+The relationship between weighted average quintile and overall social vulnerability is visualized using a scatter plot with a fitted linear regression line to illustrate the overall trend.
+
+```{r}
+source("R/03_visualize.R")
+```
+
+## Summary of Findings
+
+The analysis reveals a strong inverse association between weighted average quintile and the overall social vulnerability index. Areas with higher weighted average quintiles tend to exhibit substantially lower levels of social vulnerability. Because the weighted average quintile measure is closely related to the construction of the SVI, these results should be interpreted as descriptive rather than causal.
+
+## Reproducibility
+
+```{r}
+sessionInfo()
+```
